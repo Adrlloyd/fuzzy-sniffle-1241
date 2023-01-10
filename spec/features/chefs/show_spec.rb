@@ -11,7 +11,7 @@ RSpec.describe 'chefs show page' do
 
   it 'displays the name and its dishes' do
     visit chef_path(@chef)
-save_and_open_page
+
     expect(page).to have_content("Ramsey")
 
     within("#dishes") do
@@ -39,5 +39,15 @@ save_and_open_page
     within("#dishes") do
       expect(page).to have_content("Mac n Cheese")
     end
+  end
+
+  it 'has a link to a chefs ingredients index page' do
+    visit chef_path(@chef)
+
+    expect(page).to have_link("#{@chef.name}'s Ingredients")
+
+    click_link "#{@chef.name}'s Ingredients"
+
+    expect(current_path).to eq(chef_ingredients_path(@chef))
   end
 end

@@ -10,3 +10,5 @@
   <%= form.number_field :dish_id %>
   <%= form.submit 'Submit' %>
 <% end %>
+
+<p><%= link_to "#{@chef.name}'s Ingredients", chef_ingredients_path(@chef) %></p>
